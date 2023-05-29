@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "79043004851",
+    "project_id": "food-train-3498b",
+    "storage_bucket": "food-train-3498b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79043004851:android:4ac763dd565c2c2fb5a3c6",
+        "android_client_info": {
+          "package_name": "com.example.foodtrain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79043004851-u4cm66qberrl0d2vcvdsbdkgsg07g23i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodtrain",
+            "certificate_hash": "668eb480d1650055902bc8e441d0ffa88041940e"
+          }
+        },
+        {
+          "client_id": "79043004851-pg8hi166mgfurpdtla3s0aioastfd8pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDURV9lAOLGnVdBm5unTVi4DjIHi6Oc2FA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79043004851-pg8hi166mgfurpdtla3s0aioastfd8pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
