@@ -72,8 +72,8 @@ class SecondPage : BaseActivity() {
     }
     fun userLoggedInSuccess(user : User){
 
-        Log.i("First Name : ",user.fName)
-        Log.i("Last Name  : ",user.lName)
+        Log.i("First Name : ",user.fname)
+        Log.i("Last Name  : ",user.lname)
         Log.i("Email Id   : ",user.email)
 
         startActivity(Intent(this@SecondPage,ProductShowActivity::class.java))

@@ -46,6 +46,7 @@ class FireStoreClass {
             .document(getCurrentUserId())
             .get()
             .addOnSuccessListener {document ->
+
                 Log.i(activity.javaClass.simpleName,document.toString())
 
                 val user = document.toObject(User::class.java)!!
@@ -57,10 +58,10 @@ class FireStoreClass {
 
                 val editor :SharedPreferences.Editor = sharedPreferences.edit()
                 // Key: logged_in_username
-                // value : fname, lname
+
                 editor.putString(
                     Constants.LOGGED_IN_USERNAME,
-                    "${user.fName} ${user.lName}"
+                    "${user.fname} ${user.lname}"
                 )
                 editor.apply()
 

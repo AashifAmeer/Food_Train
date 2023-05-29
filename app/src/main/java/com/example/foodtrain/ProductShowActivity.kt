@@ -13,8 +13,8 @@ class ProductShowActivity : AppCompatActivity() {
         val welcomeText = findViewById<TextView>(R.id.welcomeText)
 
         val sharedPreferences = getSharedPreferences(Constants.FOODTRAIN_PREFERENCES,Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME,"")!!
+        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME,"A").toString()
 
-        welcomeText.text = "Logged in user is $username"
+        welcomeText.text = "Hello $username"
     }
 }

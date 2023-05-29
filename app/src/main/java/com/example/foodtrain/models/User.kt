@@ -2,8 +2,8 @@ package com.example.foodtrain.models
 
 class User (
     val userId: String = "",
-    val fName: String = "",
-    val lName: String = "",
+    val fname: String = "",
+    val lname: String = "",
     val email: String = "",
     val image: String = "",
     val mobile: Long = 0,
