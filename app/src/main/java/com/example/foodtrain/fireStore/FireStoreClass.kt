@@ -1,6 +1,8 @@
 package com.example.foodtrain.fireStore
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import com.example.foodtrain.Constants
 import com.example.foodtrain.RegisterActivity
@@ -45,7 +47,22 @@ class FireStoreClass {
             .get()
             .addOnSuccessListener {document ->
                 Log.i(activity.javaClass.simpleName,document.toString())
+
                 val user = document.toObject(User::class.java)!!
+
+                val sharedPreferences = activity.getSharedPreferences(
+                    Constants.FOODTRAIN_PREFERENCES,
+                    Context.MODE_PRIVATE
+                )
+
+                val editor :SharedPreferences.Editor = sharedPreferences.edit()
+                // Key: logged_in_username
+                // value : fname, lname
+                editor.putString(
+                    Constants.LOGGED_IN_USERNAME,
+                    "${user.fName} ${user.lName}"
+                )
+                editor.apply()
 
                 when(activity){
                     is SecondPage ->{

@@ -7,10 +7,9 @@
     tools:context=".ProductShowActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome Aashif"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
