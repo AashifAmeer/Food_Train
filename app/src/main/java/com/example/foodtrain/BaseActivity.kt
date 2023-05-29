@@ -1,14 +1,22 @@
 package com.example.foodtrain
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 
 open class BaseActivity : AppCompatActivity() {
+
+    private lateinit var progressBarDialog: Dialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
+
     }
     fun showErrorSnackBar(message : String , errorMessage:Boolean){
 
@@ -26,6 +34,20 @@ open class BaseActivity : AppCompatActivity() {
             )
         }
         snackBar.show()
+    }
+
+    fun startProgressBar(){
+        progressBarDialog = Dialog(this@BaseActivity)
+
+        progressBarDialog.setContentView(R.layout.activity_progress_bar)
+
+        progressBarDialog.setCancelable(false)
+        progressBarDialog.setCanceledOnTouchOutside(false)
+
+        progressBarDialog.show()
+    }
+    fun closingProgressBar(){
+        progressBarDialog.dismiss()
     }
 
 }

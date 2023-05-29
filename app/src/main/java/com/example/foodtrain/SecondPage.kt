@@ -62,6 +62,7 @@ class SecondPage : BaseActivity() {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful){
+                        startProgressBar()
                         FireStoreClass().getUserDetails(this@SecondPage)
                     }
                     else{
@@ -75,6 +76,8 @@ class SecondPage : BaseActivity() {
         Log.i("First Name : ",user.fname)
         Log.i("Last Name  : ",user.lname)
         Log.i("Email Id   : ",user.email)
+
+       closingProgressBar()
 
         startActivity(Intent(this@SecondPage,ProductShowActivity::class.java))
         finish()

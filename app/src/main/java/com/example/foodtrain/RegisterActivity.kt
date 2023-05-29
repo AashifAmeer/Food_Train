@@ -100,6 +100,9 @@ class RegisterActivity : BaseActivity() {
     }
     private fun registerNewUser(){
         if(validateRegisterDetails()){
+
+            startProgressBar()
+
             fName = findViewById(R.id.f_name)
             lName = findViewById(R.id.l_name)
             var email :String = findViewById<TextInputEditText>(R.id.email).text.toString().trim { it <= ' ' }
@@ -107,6 +110,7 @@ class RegisterActivity : BaseActivity() {
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener  { task ->
+                    closingProgressBar()
                         if (task.isSuccessful) {
                             val  firebaseUser : FirebaseUser = task.result?.user!!
                             val user = User(
