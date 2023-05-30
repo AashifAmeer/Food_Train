@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/design_two"
+    android:background="@drawable/registration_page_new"
 
     tools:context=".RegisterActivity">
 
@@ -13,7 +13,6 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,6 +57,7 @@
                 android:id="@+id/fNameParent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                app:boxBackgroundColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -76,6 +76,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:id="@+id/lNameParent"
+                app:boxBackgroundColor="@color/white"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -95,6 +96,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:id="@+id/emailParent"
+                app:boxBackgroundColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lNameParent"
@@ -113,11 +115,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:id="@+id/passwordParent"
+                app:boxBackgroundColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/emailParent"
                 android:layout_height="wrap_content"
+
                 android:layout_marginTop="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -131,6 +135,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/repassParent"
+                app:boxBackgroundColor="@color/white"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/passwordParent"
@@ -164,10 +169,10 @@
                     tools:checked="false" />
 
                 <TextView
-                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I Agree To The Terms &amp; Conditions" />
+                    android:fontFamily="@font/poppins "
+                    android:text="@string/user_conditions" />
             </LinearLayout>
 
             <Button
@@ -180,7 +185,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/black"
                 android:text="CREATE" />
 
             <LinearLayout

@@ -8,7 +8,7 @@
     android:layout_gravity="center"
 
     android:padding="27dp"
-    android:background="@drawable/login_1"
+    android:background="@drawable/login_page"
     >
 
 
@@ -55,7 +55,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView0" />
 
@@ -125,7 +125,7 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
+        android:backgroundTint="@color/black"
         android:text="Login"
         android:fontFamily="@font/poppins_bold"
         android:textColor="#fff"

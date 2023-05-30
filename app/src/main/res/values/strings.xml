@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Food Train</string>
+    <string name="user_conditions"><![CDATA[I Agree To The Terms & Conditions]]></string>
 </resources>
