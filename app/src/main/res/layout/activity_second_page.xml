@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SecondPage"
     android:layout_gravity="center"
+
     android:padding="27dp"
     android:background="@drawable/login_1"
     >
@@ -28,31 +29,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
-        android:fontFamily="casual"
+        android:fontFamily="@font/poppins_extrabold"
 
         android:text="W E L C O M E   TO"
         android:textAlignment="center"
 
         android:textColor="#fff"
-        android:textSize="36sp"
+        android:textSize="46sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:fontFamily="casual"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/dancing_script"
 
-        android:text="F O O D    T R A I N  :)"
+        android:text="Food Train"
         android:textAlignment="center"
 
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView0" />
 
@@ -65,7 +68,7 @@
         android:text="L O G I N"
         android:textColor="#000"
         android:textSize="25sp"
-
+        android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,6 +116,7 @@
         android:text="Forgot password ?"
         android:textAlignment="textEnd"
         android:textSize="14sp"
+        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
@@ -123,6 +127,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
         android:text="Login"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="#fff"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/linear_last"
@@ -141,11 +146,13 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:fontFamily="@font/poppins"
             android:layout_height="wrap_content"
             android:text="Don't have an account? " />
 
         <TextView
             android:id="@+id/registerBtn"
+            android:fontFamily="@font/poppins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"

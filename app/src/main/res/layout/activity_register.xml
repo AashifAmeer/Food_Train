@@ -29,6 +29,7 @@
             android:layout_gravity="center"
             android:text="CREATE AN ACCOUNT"
             android:textAlignment="center"
+            android:fontFamily="@font/poppins_extrabold"
             android:textColor="#000"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -163,6 +164,7 @@
                     tools:checked="false" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="I Agree To The Terms &amp; Conditions" />
@@ -174,6 +176,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear1"
                 android:id="@+id/create_btn"
+                android:fontFamily="@font/poppins_bold"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,11 +196,13 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Already have an account? " />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/loginBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

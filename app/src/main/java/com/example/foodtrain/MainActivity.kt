@@ -18,6 +18,6 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(Intent(this@MainActivity, SecondPage::class.java))
             finish()
-        }, 2500)
+        }, 4500)
     }
 }
