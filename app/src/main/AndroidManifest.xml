@@ -14,6 +14,9 @@
         android:theme="@style/Theme.FoodTrain"
         tools:targetApi="31">
         <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
             android:name=".ProductShowActivity"
             android:exported="false" />
         <activity

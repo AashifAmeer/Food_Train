@@ -79,7 +79,7 @@ class SecondPage : BaseActivity() {
 
        closingProgressBar()
 
-        startActivity(Intent(this@SecondPage,ProductShowActivity::class.java))
+        startActivity(Intent(this@SecondPage,UserProfile::class.java))
         finish()
     }
 }
