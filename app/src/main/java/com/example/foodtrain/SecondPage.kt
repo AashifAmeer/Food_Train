@@ -78,8 +78,15 @@ class SecondPage : BaseActivity() {
         Log.i("Email Id   : ",user.email)
 
        closingProgressBar()
+        if(user.profileCompleted == 0){
+            val intent = Intent(this@SecondPage,UserProfile::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS,user)
+            startActivity(intent)
+        }
+        else{
+            startActivity(Intent(this@SecondPage,ProductShowActivity::class.java))
+        }
 
-        startActivity(Intent(this@SecondPage,UserProfile::class.java))
         finish()
     }
 }
