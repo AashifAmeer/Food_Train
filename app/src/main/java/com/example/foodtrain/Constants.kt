@@ -2,7 +2,9 @@ package com.example.foodtrain
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.provider.MediaStore
+import android.webkit.MimeTypeMap
 import androidx.core.app.ActivityCompat.startActivityForResult
 
 object Constants {
@@ -14,10 +16,22 @@ object Constants {
 
     const val IMAGE_REQUEST_CODE :Int = 1
 
+    const val MALE :String = "male"
+    const val FEMALE : String = "female"
+    const val MOBILE : String = "mobile"
+    const val GENDER : String = "gender"
+    const val USER_PROFILE_IMAGE : String = "user_profile_image"
+    const val USER_IMAGE_URL : String = "image"
+
      fun openImagePicker(activity : Activity) {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         activity.startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
 
+    fun getFileExtension(activity:Activity,uri : Uri?) : String?{
+
+        return MimeTypeMap.getSingleton()
+            .getExtensionFromMimeType(activity.contentResolver.getType(uri!!))
+    }
 
 }
