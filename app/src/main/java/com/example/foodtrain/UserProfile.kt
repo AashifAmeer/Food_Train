@@ -11,6 +11,8 @@ import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
+import com.bumptech.glide.Glide
 import com.example.foodtrain.fireStore.FireStoreClass
 import com.example.foodtrain.models.User
 import com.google.android.material.textfield.TextInputEditText
@@ -36,9 +38,13 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         val fName = findViewById<TextInputEditText>(R.id.f_name_input)
         val lName = findViewById<TextInputEditText>(R.id.l_name_input)
         val email = findViewById<TextInputEditText>(R.id.email_input)
-
         val userImage = findViewById<ImageView>(R.id.userImage)
         val saveButton = findViewById<Button>(R.id.saveButton)
+
+//        userImage.setImageURI(userDetails.image.toUri())
+        Glide.with(this)
+            .load(userDetails.image)
+            .into(userImage)
 
         fName.isEnabled = false
         fName.setText(userDetails.fname)
@@ -106,7 +112,7 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         }
         userHashMap[Constants.GENDER] = gender
 
-
+        userHashMap[Constants.USER_PROFILE_COMPLETED] = 1
         FireStoreClass().updateUserActivity(this@UserProfile,userHashMap)
     }
 

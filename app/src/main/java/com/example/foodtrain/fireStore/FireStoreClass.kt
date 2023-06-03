@@ -7,10 +7,9 @@ import android.net.Uri
 import android.util.Log
 import com.example.foodtrain.Constants
 import com.example.foodtrain.RegisterActivity
-import com.example.foodtrain.SecondPage
+import com.example.foodtrain.LoginActivity
 import com.example.foodtrain.UserProfile
 import com.example.foodtrain.models.User
-import com.google.android.play.core.integrity.e
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -72,7 +71,7 @@ class FireStoreClass {
                 editor.apply()
 
                 when(activity){
-                    is SecondPage ->{
+                    is LoginActivity ->{
                         activity.userLoggedInSuccess(user)
                     }
                 }

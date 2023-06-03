@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodtrain">
-    
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodTrain"
         tools:targetApi="31">
+        <activity
+            android:name=".SecondViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_dash_board" />
         <activity
             android:name=".UserProfile"
             android:exported="false" />
@@ -31,7 +38,7 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".SecondPage"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
