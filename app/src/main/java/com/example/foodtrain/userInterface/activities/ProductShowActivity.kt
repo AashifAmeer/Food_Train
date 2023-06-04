@@ -1,9 +1,11 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.foodtrain.Constants
+import com.example.foodtrain.R
 
 class ProductShowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

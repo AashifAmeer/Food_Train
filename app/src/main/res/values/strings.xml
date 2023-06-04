@@ -2,7 +2,10 @@
     <string name="app_name">Food Train</string>
     <string name="user_conditions"><![CDATA[I Agree To The Terms & Conditions]]></string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_orders">Orders</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_products">Products</string>
+    <string name="title_activity_bottom_nav_bar">BottomNavBarActivity</string>
+    <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
 </resources>

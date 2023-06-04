@@ -1,8 +1,9 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import com.example.foodtrain.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 

@@ -1,6 +1,5 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
-import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,11 +8,10 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
+import com.example.foodtrain.R
 import com.example.foodtrain.fireStore.FireStoreClass
 import com.example.foodtrain.models.User
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 

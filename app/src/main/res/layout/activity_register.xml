@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/registration_page_new"
 
-    tools:context=".RegisterActivity">
+    tools:context=".userInterface.activities.RegisterActivity">
 
 
     <androidx.appcompat.widget.Toolbar

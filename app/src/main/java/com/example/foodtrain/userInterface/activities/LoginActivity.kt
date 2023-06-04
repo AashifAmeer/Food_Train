@@ -1,4 +1,4 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
 import android.content.Intent
 import android.graphics.Paint
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.TextView
+import com.example.foodtrain.Constants
+import com.example.foodtrain.R
 import com.example.foodtrain.fireStore.FireStoreClass
 import com.example.foodtrain.models.User
 import com.google.android.material.textfield.TextInputEditText
@@ -32,7 +34,7 @@ class LoginActivity : BaseActivity() {
         registerBtnClick.paintFlags = registerBtnClick.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG
 
         registerBtnClick.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
     private fun validateUserLogin(): Boolean {
@@ -74,12 +76,12 @@ class LoginActivity : BaseActivity() {
 
        closingProgressBar()
         if(user.profileCompleted == 0){
-            val intent = Intent(this@LoginActivity,UserProfile::class.java)
+            val intent = Intent(this@LoginActivity, UserProfile::class.java)
             intent.putExtra(Constants.EXTRA_USER_DETAILS,user)
             startActivity(intent)
         }
         else{
-            startActivity(Intent(this@LoginActivity,DashBoardActivity::class.java))
+            startActivity(Intent(this@LoginActivity,BottomNavBarActivity::class.java))
         }
 
         finish()

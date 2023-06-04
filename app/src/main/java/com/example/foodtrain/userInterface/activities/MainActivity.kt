@@ -1,10 +1,11 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
+import com.example.foodtrain.R
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 //        }, 4500)
         val getStartedButton = findViewById<Button>(R.id.getStartButton)
         getStartedButton.setOnClickListener {
-            startActivity(Intent(this@MainActivity,SecondViewActivity::class.java))
+            startActivity(Intent(this@MainActivity, SecondViewActivity::class.java))
             finish()
         }
 

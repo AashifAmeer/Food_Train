@@ -1,16 +1,17 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.os.Handler
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.foodtrain.R
 import com.google.android.material.snackbar.Snackbar
 
 open class BaseActivity : AppCompatActivity() {
 
+    private var backButtonPressedOnce = false
     private lateinit var progressBarDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +26,12 @@ open class BaseActivity : AppCompatActivity() {
 
         if(errorMessage){
             snackBarView.setBackgroundColor(
-                ContextCompat.getColor(this@BaseActivity,R.color.red)
+                ContextCompat.getColor(this@BaseActivity, R.color.red)
             )
         }
         else{
             snackBarView.setBackgroundColor(
-                ContextCompat.getColor(this@BaseActivity,R.color.green)
+                ContextCompat.getColor(this@BaseActivity, R.color.green)
             )
         }
         snackBar.show()
@@ -48,6 +49,20 @@ open class BaseActivity : AppCompatActivity() {
     }
     fun closingProgressBar(){
         progressBarDialog.dismiss()
+    }
+
+    fun doubleBackToExit(){
+
+        if(backButtonPressedOnce){
+            super.onBackPressed()
+            return
+        }
+        this.backButtonPressedOnce = true
+
+        Toast.makeText(this,"Please click back button again to exit !",Toast.LENGTH_SHORT).show()
+
+        @Suppress("DEPRECATION")
+        Handler().postDelayed({backButtonPressedOnce = false},2000)
     }
 
 }

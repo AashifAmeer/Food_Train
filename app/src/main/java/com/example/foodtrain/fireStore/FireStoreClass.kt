@@ -6,9 +6,9 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import com.example.foodtrain.Constants
-import com.example.foodtrain.RegisterActivity
-import com.example.foodtrain.LoginActivity
-import com.example.foodtrain.UserProfile
+import com.example.foodtrain.userInterface.activities.RegisterActivity
+import com.example.foodtrain.userInterface.activities.LoginActivity
+import com.example.foodtrain.userInterface.activities.UserProfile
 import com.example.foodtrain.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,7 +20,7 @@ class FireStoreClass {
 
     private val foodTrainFireStore = FirebaseFirestore.getInstance()
 
-    fun registerUser( activity : RegisterActivity , userInfo : User){
+    fun registerUser(activity : RegisterActivity, userInfo : User){
 
         foodTrainFireStore.collection(Constants.USERS)
             .document(userInfo.userId)

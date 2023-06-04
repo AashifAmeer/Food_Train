@@ -1,4 +1,4 @@
-package com.example.foodtrain
+package com.example.foodtrain.userInterface.activities
 
 import android.Manifest
 import android.app.Activity
@@ -11,8 +11,10 @@ import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import com.bumptech.glide.Glide
+import com.example.foodtrain.Constants
+import com.example.foodtrain.GlideLoader
+import com.example.foodtrain.R
 import com.example.foodtrain.fireStore.FireStoreClass
 import com.example.foodtrain.models.User
 import com.google.android.material.textfield.TextInputEditText
@@ -177,7 +179,7 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         closingProgressBar()
         Toast.makeText(this,"Successfully updated user profile",Toast.LENGTH_SHORT).show()
 
-        startActivity(Intent(this@UserProfile,ProductShowActivity::class.java))
+        startActivity(Intent(this@UserProfile, ProductShowActivity::class.java))
         finish()
     }
 

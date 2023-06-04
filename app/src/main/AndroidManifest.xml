@@ -16,32 +16,32 @@
         android:theme="@style/Theme.FoodTrain"
         tools:targetApi="31">
         <activity
-            android:name=".SecondViewActivity"
+            android:name=".userInterface.activities.SecondViewActivity"
             android:exported="false" />
         <activity
-            android:name=".DashBoardActivity"
+            android:name=".userInterface.activities.BottomNavBarActivity"
             android:exported="false"
-            android:label="@string/title_activity_dash_board" />
+            />
         <activity
-            android:name=".UserProfile"
+            android:name=".userInterface.activities.UserProfile"
             android:exported="false" />
         <activity
-            android:name=".ProductShowActivity"
+            android:name=".userInterface.activities.ProductShowActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".userInterface.activities.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".BaseActivity"
+            android:name=".userInterface.activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".userInterface.activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".userInterface.activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".userInterface.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

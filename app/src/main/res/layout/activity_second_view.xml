@@ -6,7 +6,7 @@
     android:padding="25dp"
     android:background="@drawable/registration_page"
     android:layout_height="match_parent"
-    tools:context=".SecondViewActivity">
+    tools:context=".userInterface.activities.SecondViewActivity">
 
     <TextView
         android:id="@+id/textView7"
