@@ -81,7 +81,9 @@ class LoginActivity : BaseActivity() {
             startActivity(intent)
         }
         else{
-            startActivity(Intent(this@LoginActivity,BottomNavBarActivity::class.java))
+            val intent = Intent(this@LoginActivity, BottomNavBarActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS,user)
+            startActivity(intent)
         }
 
         finish()

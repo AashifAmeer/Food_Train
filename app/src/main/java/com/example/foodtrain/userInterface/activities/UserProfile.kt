@@ -41,6 +41,9 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         val lName = findViewById<TextInputEditText>(R.id.l_name_input)
         val email = findViewById<TextInputEditText>(R.id.email_input)
         val userImage = findViewById<ImageView>(R.id.userImage)
+        val mobile = findViewById<TextInputEditText>(R.id.mobile)
+        val genderMale = findViewById<RadioButton>(R.id.radioButton1)
+        val genderFemale = findViewById<RadioButton>(R.id.radioButton2)
         val saveButton = findViewById<Button>(R.id.saveButton)
 
 //        userImage.setImageURI(userDetails.image.toUri())
@@ -56,6 +59,15 @@ class UserProfile : BaseActivity(), View.OnClickListener {
 
         email.isEnabled = false
         email.setText(userDetails.email)
+
+        mobile.setText((userDetails.mobile).toString())
+
+        if(userDetails.gender == Constants.MALE){
+            genderMale.isChecked = true
+        }
+        else{
+            genderFemale.isChecked = true
+        }
 
         userImage.setOnClickListener(this@UserProfile)
         saveButton.setOnClickListener (this@UserProfile)

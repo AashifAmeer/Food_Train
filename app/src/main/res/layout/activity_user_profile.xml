@@ -55,6 +55,7 @@
                 <ImageView
                     android:id="@+id/userImage"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/_709343_3731109_removebg_preview" />
