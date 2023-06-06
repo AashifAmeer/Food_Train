@@ -23,6 +23,7 @@ object Constants {
     const val USER_PROFILE_IMAGE : String = "user_profile_image"
     const val USER_IMAGE_URL : String = "image"
 
+    const val HEADING : String = "profileHeading"
     const val USER_PROFILE_COMPLETED :String = "profileCompleted"
 
      fun openImagePicker(activity : Activity) {

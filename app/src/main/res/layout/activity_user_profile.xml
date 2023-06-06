@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/profileHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -52,13 +53,19 @@
                 android:padding="5dp"
                 android:layout_height="200dp">
 
-                <ImageView
-                    android:id="@+id/userImage"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/_709343_3731109_removebg_preview" />
+               <androidx.cardview.widget.CardView
+                   app:cardCornerRadius="35dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                   <ImageView
+                       android:id="@+id/userImage"
+                       android:scaleType="fitXY"
+                       android:layout_gravity="center"
+                       android:backgroundTint="@color/white"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:src="@drawable/_709343_3731109_removebg_preview" />
+               </androidx.cardview.widget.CardView>
             </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout

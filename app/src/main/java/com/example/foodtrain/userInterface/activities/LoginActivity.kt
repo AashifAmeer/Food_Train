@@ -81,9 +81,11 @@ class LoginActivity : BaseActivity() {
             startActivity(intent)
         }
         else{
-            val intent = Intent(this@LoginActivity, BottomNavBarActivity::class.java)
-            intent.putExtra(Constants.EXTRA_USER_DETAILS,user)
-            startActivity(intent)
+//            val intent = Intent(this@LoginActivity, BottomNavBarActivity::class.java)
+//            intent.putExtra(Constants.EXTRA_USER_DETAILS,user)
+//            intent.putExtra(Constants.HEADING,"EDIT PROFILE")
+//            startActivity(intent)
+                startActivity(Intent(this@LoginActivity,BottomNavBarActivity::class.java))
         }
 
         finish()

@@ -31,12 +31,16 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_user_profile)
 
          userDetails = User()
+        var heading : String = "COMPLETE PROFILE"
 
-        if(intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
+        if(intent.hasExtra(Constants.EXTRA_USER_DETAILS) ){
              // Getting extra user details from parcelableExtra.
             userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
-
+        if(intent.hasExtra(Constants.HEADING)){
+            heading = intent.getStringExtra(Constants.HEADING)!!
+        }
+        val profileHeading = findViewById<TextView>(R.id.profileHeading)
         val fName = findViewById<TextInputEditText>(R.id.f_name_input)
         val lName = findViewById<TextInputEditText>(R.id.l_name_input)
         val email = findViewById<TextInputEditText>(R.id.email_input)
@@ -47,6 +51,8 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         val saveButton = findViewById<Button>(R.id.saveButton)
 
 //        userImage.setImageURI(userDetails.image.toUri())
+        profileHeading.text = heading
+
         Glide.with(this)
             .load(userDetails.image)
             .into(userImage)
@@ -191,7 +197,7 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         closingProgressBar()
         Toast.makeText(this,"Successfully updated user profile",Toast.LENGTH_SHORT).show()
 
-        startActivity(Intent(this@UserProfile, ProductShowActivity::class.java))
+        startActivity(Intent(this@UserProfile, BottomNavBarActivity::class.java))
         finish()
     }
 

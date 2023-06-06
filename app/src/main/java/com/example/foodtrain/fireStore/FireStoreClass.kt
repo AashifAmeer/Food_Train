@@ -10,6 +10,7 @@ import com.example.foodtrain.userInterface.activities.RegisterActivity
 import com.example.foodtrain.userInterface.activities.LoginActivity
 import com.example.foodtrain.userInterface.activities.UserProfile
 import com.example.foodtrain.models.User
+import com.example.foodtrain.userInterface.activities.BottomNavBarActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -73,6 +74,9 @@ class FireStoreClass {
                 when(activity){
                     is LoginActivity ->{
                         activity.userLoggedInSuccess(user)
+                    }
+                    is BottomNavBarActivity ->{
+                        activity.userDetailSuccess(user)
                     }
                 }
             }
