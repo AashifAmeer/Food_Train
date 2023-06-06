@@ -83,11 +83,13 @@ class BottomNavBarActivity : BaseActivity() {
         navigationView.setNavigationItemSelectedListener{ MenuItem->
             when(MenuItem.itemId) {
                 R.id.edit_user ->{
+
                     val intent = Intent(this@BottomNavBarActivity, UserProfile::class.java)
                     intent.putExtra(Constants.EXTRA_USER_DETAILS,userDetails)
                     intent.putExtra(Constants.HEADING,"EDIT PROFILE")
                     startActivity(intent)
                     drawerLayout.closeDrawers()
+
                     true
                 }
                 else-> false
@@ -113,5 +115,10 @@ class BottomNavBarActivity : BaseActivity() {
         email.text = "Email   : ${user.email}"
         mobile.text = "Mobile : ${user.mobile}"
         gender.text = "Gender : ${user.gender.toUpperCase()}"
+    }
+    override fun onResume() {
+        super.onResume()
+        val navigationView = findViewById<NavigationView>(R.id.sideNavigationView)
+        navigationView.setCheckedItem(0) // Use 0 as the argument to clear the checked state
     }
 }

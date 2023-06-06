@@ -11,12 +11,14 @@ import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.foodtrain.Constants
 import com.example.foodtrain.GlideLoader
 import com.example.foodtrain.R
 import com.example.foodtrain.fireStore.FireStoreClass
 import com.example.foodtrain.models.User
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import java.io.IOException
 
@@ -80,6 +82,10 @@ class UserProfile : BaseActivity(), View.OnClickListener {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
     override fun onClick(view: View?) {
         if(view != null){
 
@@ -110,6 +116,7 @@ class UserProfile : BaseActivity(), View.OnClickListener {
                         }
                     }
                 }
+
             }
         }
     }
