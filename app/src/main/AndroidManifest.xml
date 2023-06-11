@@ -15,13 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodTrain"
         tools:targetApi="31">
+
         <activity
             android:name=".userInterface.activities.SecondViewActivity"
             android:exported="false" />
         <activity
             android:name=".userInterface.activities.BottomNavBarActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".userInterface.activities.UserProfile"
             android:exported="false" />

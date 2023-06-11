@@ -5,17 +5,24 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import com.example.foodtrain.Constants
-import com.example.foodtrain.userInterface.activities.RegisterActivity
-import com.example.foodtrain.userInterface.activities.LoginActivity
-import com.example.foodtrain.userInterface.activities.UserProfile
+import com.example.foodtrain.models.FoodVertical
+import com.example.foodtrain.models.HomeHorModel
 import com.example.foodtrain.models.User
-import com.example.foodtrain.userInterface.activities.BottomNavBarActivity
+import com.example.foodtrain.userInterface.activities.*
+import com.example.foodtrain.userInterface.fragments.HomeFragment
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.collections.HashMap
+import kotlinx.coroutines.tasks.await as await
 
 class FireStoreClass {
 
@@ -132,6 +139,7 @@ class FireStoreClass {
                         is UserProfile -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+
                     }
                 }
         }
@@ -141,6 +149,7 @@ class FireStoreClass {
                     is UserProfile ->{
                         activity.closingProgressBar()
                     }
+
                 }
 
                 Log.e(
@@ -151,4 +160,10 @@ class FireStoreClass {
             }
     }
 
+
+
+
+
+
 }
+
