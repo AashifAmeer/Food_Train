@@ -15,7 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodTrain"
         tools:targetApi="31">
-
+        <activity
+            android:name=".userInterface.activities.FoodAddSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".userInterface.activities.AddFoodTypeActivity"
+            android:exported="false" />
         <activity
             android:name=".userInterface.activities.SecondViewActivity"
             android:exported="false" />

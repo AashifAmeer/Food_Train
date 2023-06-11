@@ -57,10 +57,10 @@ class BottomNavBarActivity : BaseActivity() {
         getUserDetails()
 
         val currentUser = findViewById<ImageView>(R.id.currentUser)
-//        currentUser.setOnClickListener{
-//            val intent = Intent(this@BottomNavBarActivity, FoodAddSelectionActivity::class.java)
-//            startActivity(intent)
-//        }
+        currentUser.setOnClickListener{
+            val intent = Intent(this@BottomNavBarActivity, FoodAddSelectionActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -111,12 +111,12 @@ class BottomNavBarActivity : BaseActivity() {
         val mobile = findViewById<TextView>(R.id.userMobile)
         val gender = findViewById<TextView>(R.id.userGender)
 
-        if(user != null){
-            uname.text = "${user.fname} ${user.lname}"
-            email.text = "Email   : ${user.email}"
-            mobile.text = "Mobile : ${user.mobile}"
-            gender.text = "Gender : ${user.gender.toUpperCase()}"
-        }
+//        if(user != null){
+//            uname.text = "${user.fname} ${user.lname}"
+//            email.text = "Email   : ${user.email}"
+//            mobile.text = "Mobile : ${user.mobile}"
+//            gender.text = "Gender : ${user.gender.toUpperCase()}"
+//        }
     }
     override fun onResume() {
         super.onResume()

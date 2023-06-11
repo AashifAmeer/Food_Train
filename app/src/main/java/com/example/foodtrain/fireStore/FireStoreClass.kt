@@ -5,24 +5,22 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import com.example.foodtrain.Constants
-import com.example.foodtrain.models.FoodVertical
-import com.example.foodtrain.models.HomeHorModel
+import com.example.foodtrain.models.FoodItem
+import com.example.foodtrain.models.FoodType
 import com.example.foodtrain.models.User
 import com.example.foodtrain.userInterface.activities.*
 import com.example.foodtrain.userInterface.fragments.HomeFragment
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.util.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlin.collections.HashMap
-import kotlinx.coroutines.tasks.await as await
 
 class FireStoreClass {
 
@@ -119,6 +117,7 @@ class FireStoreClass {
     }
 
     fun uploadImageToCloudStorage(activity: Activity,imageFileURI : Uri?){
+
         val sRef : StorageReference = FirebaseStorage.getInstance().reference.child(
             Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
             + Constants.getFileExtension(
@@ -139,6 +138,9 @@ class FireStoreClass {
                         is UserProfile -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddFoodTypeActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
 
                     }
                 }
@@ -147,6 +149,9 @@ class FireStoreClass {
 
                 when(activity){
                     is UserProfile ->{
+                        activity.closingProgressBar()
+                    }
+                    is AddFoodTypeActivity ->{
                         activity.closingProgressBar()
                     }
 
@@ -159,7 +164,67 @@ class FireStoreClass {
                 )
             }
     }
+    fun addNewFoodTypeToFireStore(activity: AddFoodTypeActivity, foodType: FoodType){
 
+        foodTrainFireStore.collection(Constants.FOOD_TYPE)
+            .document(foodType.foodTypeId)
+            .set(foodType, SetOptions.merge())
+            .addOnCompleteListener {
+
+                GlobalScope.launch(Dispatchers.Main){
+                    val foodType = loadFoodTypes()
+                    HomeFragment().getFoodTypes(foodType)
+                }
+                activity.foodTypeAddedSuccess()
+
+            }
+            .addOnFailureListener { e->
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while adding the food type",
+                    e
+                )
+            }
+    }
+     suspend fun loadFoodTypes() : MutableList<FoodType>{
+
+        val foodTypes = mutableListOf<FoodType>()
+        try {
+            val querySnapshot = foodTrainFireStore.collection(Constants.FOOD_TYPE).get().await()
+
+                    for(document in querySnapshot){
+
+                        val foodTypeId = document.getString("foodTypeId")
+                        val foodTypeName = document.getString("foodTypeName")
+                        val foodTypeImage = document.getString("foodTypeImage")
+                        val foodItems = document.get("foodItems") as List<HashMap<String,Any>>
+
+                        val parsedFoodItems = foodItems.map { item ->
+                            FoodItem(
+                                item["food_id"] as String,
+                                item["food_name"] as String,
+                                item["food_image"] as String,
+                                item["food_price"] as Double,
+                                item["food_quantity"] as Int,
+                                item["food_description"] as String,
+                                item["food_type_id"] as String
+                            )
+                        }
+
+                        val foodType = FoodType(
+                            foodTypeId ?:"",
+                            foodTypeName ?:"",
+                            foodTypeImage ?:"",
+                            parsedFoodItems
+                        )
+                        foodTypes.add(foodType)
+                    }
+
+        }catch (e : Exception){
+
+        }
+        return foodTypes
+    }
 
 
 

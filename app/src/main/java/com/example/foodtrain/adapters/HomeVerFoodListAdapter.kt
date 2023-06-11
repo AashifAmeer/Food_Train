@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtrain.R
-import com.example.foodtrain.models.FoodVertical
+import com.example.foodtrain.models.FoodItem
 
 class HomeVerFoodListAdapter(
-    val context : Context,private val foods : List<FoodVertical>
+    val context : Context,private val foods : List<FoodItem>
     ) :
     RecyclerView.Adapter<HomeVerFoodListAdapter.ViewHolder>() {
 
@@ -32,10 +32,10 @@ class HomeVerFoodListAdapter(
         private val image: ImageView =
             itemView.findViewById(R.id.food_image)
 
-        fun bind(food: FoodVertical) {
-            nameTextView.text = food.name
-            priceTextView.text = food.price.toString()
-            image.setImageResource(food.image)
+        fun bind(food: FoodItem) {
+            nameTextView.text = food.food_name
+            priceTextView.text = food.food_price.toString()
+            //image.setImageResource(food.image)
         }
 
     }

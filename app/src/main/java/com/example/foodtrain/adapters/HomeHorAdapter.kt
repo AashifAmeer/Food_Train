@@ -1,20 +1,23 @@
 package com.example.foodtrain.adapters
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
+import com.bumptech.glide.Glide
+import com.example.foodtrain.GlideLoader
 import com.example.foodtrain.R
-import com.example.foodtrain.models.HomeHorModel
+import com.example.foodtrain.models.FoodItem
+import com.example.foodtrain.models.FoodType
 
 class HomeHorAdapter(
     val context : Context,
-    private val productList: List<HomeHorModel>,
-    private val onFoodTypeSelected : (HomeHorModel) -> Unit
+    private val productList: List<FoodType>,
+    private val onFoodTypeSelected : (FoodType) -> Unit
 
     ) : RecyclerView.Adapter<HomeHorAdapter.MyViewHolder>() {
 
@@ -31,11 +34,15 @@ class HomeHorAdapter(
     }
 
     inner class MyViewHolder(view: View):RecyclerView.ViewHolder(view){
+
         private val textView: TextView = itemView.findViewById(R.id.food_type_text)
         private val image :ImageView = itemView.findViewById(R.id.food_type)
-        fun bind(foodType: HomeHorModel) {
-            textView.text = foodType.foodType
-            image.setImageResource(foodType.imageSrc)
+
+        fun bind(foodType: FoodType) {
+
+            textView.text = foodType.foodTypeName
+            //image.setImageResource(foodType.foodTypeImage)
+            Glide.with(itemView).load(foodType.foodTypeImage).into(image)
             itemView.setOnClickListener {
                 onFoodTypeSelected(foodType)
             }
