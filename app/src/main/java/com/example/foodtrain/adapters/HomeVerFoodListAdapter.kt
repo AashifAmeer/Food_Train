@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.foodtrain.R
 import com.example.foodtrain.models.FoodItem
 
@@ -35,7 +36,8 @@ class HomeVerFoodListAdapter(
         fun bind(food: FoodItem) {
             nameTextView.text = food.food_name
             priceTextView.text = food.food_price.toString()
-            //image.setImageResource(food.image)
+            Glide.with(itemView).load(food.food_image).into(image)
+
         }
 
     }

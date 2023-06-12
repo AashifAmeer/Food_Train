@@ -12,8 +12,17 @@ class FoodAddSelectionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_food_add_selection)
 
         val addFoodTypeButton = findViewById<Button>(R.id.food_type_btn)
+        val addFoodItemButton = findViewById<Button>(R.id.food_list_btn)
+
         addFoodTypeButton.setOnClickListener {
             startActivity(Intent(this,AddFoodTypeActivity::class.java))
+            finish()
+        }
+
+        addFoodItemButton.setOnClickListener{
+            startActivity(Intent(this,AddFoodItemsActivity::class.java))
+            finish()
+
         }
     }
 }

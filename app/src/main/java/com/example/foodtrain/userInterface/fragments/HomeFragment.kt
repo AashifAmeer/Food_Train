@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
-    private var productList = mutableListOf<FoodType>()
+    private var productList = ArrayList<FoodType>()
     private lateinit var recyclerViewHor : RecyclerView
     private lateinit var recyclerViewVer : RecyclerView
 
@@ -38,11 +38,24 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        recyclerViewHor = root.findViewById(R.id.food_type_recycler)
+        recyclerViewVer = root.findViewById(R.id.food_list_vertical_recycler)
+
+        productList.clear()
+
         GlobalScope.launch(Dispatchers.Main) {
             val foodTypes = FireStoreClass().loadFoodTypes()
             productList.addAll(foodTypes)
             recyclerViewHor.adapter?.notifyDataSetChanged()
+            recyclerViewVer.adapter?.notifyDataSetChanged()
         }
+
+
+
+
+
+        // Set up RecyclerView vertical
+
 
 //        val textView: TextView = binding.textHome
 //        textView.text = "Home"
@@ -56,10 +69,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set up RecyclerView horizontal
-
-
-
-        recyclerViewHor = view.findViewById(R.id.food_type_recycler)
         recyclerViewHor.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         recyclerViewHor.isNestedScrollingEnabled = true
 
@@ -68,10 +77,7 @@ class HomeFragment : Fragment() {
         }
         recyclerViewHor.adapter = adapter
 
-
         // Set up RecyclerView vertical
-
-        recyclerViewVer = view.findViewById(R.id.food_list_vertical_recycler)
         recyclerViewVer.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
 
         // Add sample products
@@ -86,8 +92,9 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    fun getFoodTypes(foodType : MutableList<FoodType>){
-        productList = foodType
+    fun getFoodTypes(foodType : ArrayList<FoodType>){
+        productList.clear()
+        productList.addAll(foodType)
     }
 
     // Without database

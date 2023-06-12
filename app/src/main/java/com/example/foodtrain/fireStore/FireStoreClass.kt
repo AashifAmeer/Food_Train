@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import androidx.constraintlayout.widget.ConstraintSet
 import com.example.foodtrain.Constants
 import com.example.foodtrain.models.FoodItem
 import com.example.foodtrain.models.FoodType
@@ -12,8 +13,10 @@ import com.example.foodtrain.models.User
 import com.example.foodtrain.userInterface.activities.*
 import com.example.foodtrain.userInterface.fragments.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +26,7 @@ import kotlinx.coroutines.tasks.await
 import kotlin.collections.HashMap
 
 class FireStoreClass {
+
 
     private val foodTrainFireStore = FirebaseFirestore.getInstance()
 
@@ -141,6 +145,9 @@ class FireStoreClass {
                         is AddFoodTypeActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddFoodItemsActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
 
                     }
                 }
@@ -154,7 +161,9 @@ class FireStoreClass {
                     is AddFoodTypeActivity ->{
                         activity.closingProgressBar()
                     }
-
+                    is AddFoodItemsActivity -> {
+                        activity.closingProgressBar()
+                    }
                 }
 
                 Log.e(
@@ -186,39 +195,38 @@ class FireStoreClass {
                 )
             }
     }
-     suspend fun loadFoodTypes() : MutableList<FoodType>{
 
-        val foodTypes = mutableListOf<FoodType>()
+    fun addNewFoodItemToFireStore(activity: AddFoodItemsActivity, foodItems: FoodItem){
+
+        foodTrainFireStore.collection(Constants.FOOD_TYPE)
+            .document(foodItems.food_type_id)
+            .update(Constants.FOOD_Items,FieldValue.arrayUnion(foodItems))
+            .addOnSuccessListener {
+                GlobalScope.launch(Dispatchers.Main){
+                    val foodType = loadFoodTypes()
+                    HomeFragment().getFoodTypes(foodType)
+                }
+                activity.foodItemAddedSuccess()
+            }
+            .addOnFailureListener {e->
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while adding food item",
+                    e
+                )
+            }
+    }
+
+     suspend fun loadFoodTypes() : ArrayList<FoodType>{
+
+        val foodTypes = ArrayList<FoodType>()
         try {
             val querySnapshot = foodTrainFireStore.collection(Constants.FOOD_TYPE).get().await()
 
-                    for(document in querySnapshot){
-
-                        val foodTypeId = document.getString("foodTypeId")
-                        val foodTypeName = document.getString("foodTypeName")
-                        val foodTypeImage = document.getString("foodTypeImage")
-                        val foodItems = document.get("foodItems") as List<HashMap<String,Any>>
-
-                        val parsedFoodItems = foodItems.map { item ->
-                            FoodItem(
-                                item["food_id"] as String,
-                                item["food_name"] as String,
-                                item["food_image"] as String,
-                                item["food_price"] as Double,
-                                item["food_quantity"] as Int,
-                                item["food_description"] as String,
-                                item["food_type_id"] as String
-                            )
-                        }
-
-                        val foodType = FoodType(
-                            foodTypeId ?:"",
-                            foodTypeName ?:"",
-                            foodTypeImage ?:"",
-                            parsedFoodItems
-                        )
-                        foodTypes.add(foodType)
-                    }
+            for(document in querySnapshot) {
+                val foodType = document.toObject(FoodType::class.java)
+                foodTypes.add(foodType)
+            }
 
         }catch (e : Exception){
 
@@ -226,6 +234,53 @@ class FireStoreClass {
         return foodTypes
     }
 
+    suspend fun getCurrentFoodTypeIdSelectedBySpinner(foodTypeName : String) : String{
+
+        var currentFoodTypeId  = ""
+        try {
+            val querySnapshot = foodTrainFireStore.collection(Constants.FOOD_TYPE)
+                .whereEqualTo(Constants.FOOD_TYPE_NAME,foodTypeName)
+                .get()
+                .await()
+
+
+            if (!querySnapshot.isEmpty) {
+                val document = querySnapshot.documents[0]
+                val foodTypeId = document.id
+                // Use the foodTypeId as needed
+                currentFoodTypeId = foodTypeId
+
+            } else {
+                Log.d("Firestore", "No matching document found")
+            }
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+        }
+
+        return currentFoodTypeId
+    }
+
+     suspend fun loadFoodTypesNames() : List<String> {
+        val foodTypeNames = mutableListOf<String>()
+
+        try {
+
+            val querySnapshot = foodTrainFireStore.collection(Constants.FOOD_TYPE).get().await()
+
+                for(document in querySnapshot){
+                    val foodTypeName = document.getString(Constants.FOOD_TYPE_NAME)
+                    foodTypeName?.let{
+                        foodTypeNames.add(foodTypeName)
+                    }
+                }
+
+        }catch (e: Exception){
+
+        }
+
+        return foodTypeNames
+    }
 
 
 

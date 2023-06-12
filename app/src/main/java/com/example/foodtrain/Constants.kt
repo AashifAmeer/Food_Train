@@ -27,8 +27,11 @@ object Constants {
     const val USER_PROFILE_COMPLETED :String = "profileCompleted"
 
     const val FOOD_TYPE : String = "food_types"
-    const val FOOD_TYPE_NAME : String = "foodType"
-    const val FOOD_LISTS : String = "food_lists"
+    const val FOOD_TYPE_NAME : String = "foodTypeName"
+    const val FOOD_Items : String = "foodItems"
+    const val FOOD_TYPE_ID : String = "foodTypeId"
+    const val FOOD_TYPE_IMAGE : String = "foodTypeImage"
+
 
      fun openImagePicker(activity : Activity) {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
