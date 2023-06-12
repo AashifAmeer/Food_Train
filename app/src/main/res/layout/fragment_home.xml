@@ -5,6 +5,7 @@
     tools:context=".userInterface.fragments.HomeFragment"
     android:layout_height="match_parent"
     android:id="@+id/swipe_refresh_layout"
+    android:background="#F0F9FA"
     android:layout_width="match_parent"
     >
 
@@ -33,11 +34,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Popular Now !"
+                android:text="Find The Best\nFeed Around You !"
                 android:textColor="@color/black"
                 android:layout_margin="25dp"
-                android:textSize="20sp"
-                android:fontFamily="@font/poppins_bold"
+                android:textSize="25sp"
+                android:fontFamily="@font/poppins_extrabold"
                 android:id="@+id/offer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/burger_g4704af498_1280"
+                    android:src="@drawable/chili_g72b6294f4_1280"
                     />
             </androidx.cardview.widget.CardView>
             <TextView
@@ -66,7 +67,7 @@
                 android:layout_margin="25dp"
                 android:text="Let's Eat"
                 android:textColor="@color/black"
-                android:fontFamily="@font/poppins_extrabold"
+                android:fontFamily="@font/poppins_bold"
                 android:textSize="25sp"
 
                 app:layout_constraintStart_toStartOf="parent"

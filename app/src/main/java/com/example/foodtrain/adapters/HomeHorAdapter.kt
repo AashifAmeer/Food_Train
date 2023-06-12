@@ -47,7 +47,7 @@ class HomeHorAdapter(
             textView.text = foodType.foodTypeName
 
             val backgroundColor = if (adapterPosition == selectedPosition) {
-                ContextCompat.getColor(context,R.color.green)
+                ContextCompat.getColor(context,R.color.yellow)
             } else {
                 ContextCompat.getColor(context, R.color.red)
             }

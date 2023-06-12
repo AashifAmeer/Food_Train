@@ -96,6 +96,7 @@ class HomeFragment : Fragment() {
 
 
         // Set up RecyclerView vertical
+       // recyclerViewVer.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
         recyclerViewVer.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
 
 
