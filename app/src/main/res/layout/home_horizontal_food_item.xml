@@ -4,8 +4,9 @@
     android:orientation="vertical"
     android:layout_width="100dp"
     app:cardBackgroundColor="@color/red"
-    app:cardCornerRadius="20dp"
-    android:layout_margin="17dp"
+    app:cardCornerRadius="35dp"
+    android:layout_margin="10dp"
+    android:id="@+id/horCardView"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -19,6 +20,7 @@
             android:id="@+id/food_type"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_baseline_lunch_dining_24"
             />
         <TextView

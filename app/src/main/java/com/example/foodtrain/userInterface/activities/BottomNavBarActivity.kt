@@ -64,6 +64,9 @@ class BottomNavBarActivity : BaseActivity() {
 
     }
 
+    override fun onBackPressed() {
+        doubleBackToExit()
+    }
     private fun sideNavigationBar(){
         val drawerLayout = findViewById<DrawerLayout>(R.id.container)
         val navigationView = findViewById<NavigationView>(R.id.sideNavigationView)

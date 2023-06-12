@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:backgroundTint="#FFE6CD"
     app:cardCornerRadius="40dp"
-    android:layout_margin="15dp"
+    android:layout_margin="25dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -15,12 +16,13 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             app:cardCornerRadius="40dp"
             android:background="@color/red"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/food_image"
+                android:scaleType="fitCenter"
                 android:layout_width="match_parent"
                 android:src="@drawable/ic_baseline_lunch_dining_24"
                 android:layout_height="200dp"/>
@@ -39,26 +41,33 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_gravity="bottom"
             android:layout_height="wrap_content">
-            <RatingBar
-                android:scaleX="0.6"
-                android:scaleY="0.6"
-                android:layout_gravity="left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+
             <TextView
                 android:id="@+id/priceOfaFood"
                 android:layout_gravity="center_vertical"
-                android:gravity="right"
+                android:gravity="start"
                 android:foregroundGravity="right"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:text="LKR 350"
                 android:textSize="20sp"
                 android:textColor="@color/red_dark"
                 android:fontFamily="@font/poppins_bold"
+                />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_add_box_black_24"
+                android:foregroundGravity="right"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
     </LinearLayout>

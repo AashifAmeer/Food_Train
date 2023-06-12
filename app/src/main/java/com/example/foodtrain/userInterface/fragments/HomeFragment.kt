@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.foodtrain.R
 import com.example.foodtrain.adapters.HomeHorAdapter
 import com.example.foodtrain.adapters.HomeVerFoodListAdapter
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
     private var productList = ArrayList<FoodType>()
     private lateinit var recyclerViewHor : RecyclerView
     private lateinit var recyclerViewVer : RecyclerView
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -40,19 +42,32 @@ class HomeFragment : Fragment() {
 
         recyclerViewHor = root.findViewById(R.id.food_type_recycler)
         recyclerViewVer = root.findViewById(R.id.food_list_vertical_recycler)
+        swipeRefreshLayout = root.findViewById(R.id.swipe_refresh_layout)
+
 
         productList.clear()
-
-        GlobalScope.launch(Dispatchers.Main) {
-            val foodTypes = FireStoreClass().loadFoodTypes()
-            productList.addAll(foodTypes)
-            recyclerViewHor.adapter?.notifyDataSetChanged()
-            recyclerViewVer.adapter?.notifyDataSetChanged()
+        swipeRefreshLayout.setOnRefreshListener {
+            GlobalScope.launch(Dispatchers.Main) {
+                swipeRefreshLayout.isRefreshing = true
+                val foodTypes = FireStoreClass().loadFoodTypes()
+                productList.clear()
+                productList.addAll(foodTypes)
+                recyclerViewHor.adapter?.notifyDataSetChanged()
+                recyclerViewVer.adapter?.notifyDataSetChanged()
+                swipeRefreshLayout.isRefreshing = false
+            }
         }
 
 
-
-
+        GlobalScope.launch(Dispatchers.Main) {
+            swipeRefreshLayout.isRefreshing = true
+            val foodTypes = FireStoreClass().loadFoodTypes()
+            productList.clear()
+            productList.addAll(foodTypes)
+            recyclerViewHor.adapter?.notifyDataSetChanged()
+            recyclerViewVer.adapter?.notifyDataSetChanged()
+            swipeRefreshLayout.isRefreshing = false
+        }
 
         // Set up RecyclerView vertical
 
@@ -73,12 +88,16 @@ class HomeFragment : Fragment() {
         recyclerViewHor.isNestedScrollingEnabled = true
 
         val adapter = HomeHorAdapter(requireContext(),productList){foodType ->
+
             showTypeOfFood(foodType.foodItems)
         }
         recyclerViewHor.adapter = adapter
 
+
+
         // Set up RecyclerView vertical
         recyclerViewVer.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
+
 
         // Add sample products
         //addSampleProducts()

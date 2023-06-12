@@ -17,9 +17,11 @@ class SecondViewActivity : AppCompatActivity() {
         loginLink.setOnClickListener {
             //startActivity(Intent(this@SecondViewActivity, LoginActivity::class.java))
             startActivity(Intent(this@SecondViewActivity, BottomNavBarActivity::class.java))
+            finish()
         }
         signUpLink.setOnClickListener {
             startActivity(Intent(this@SecondViewActivity, RegisterActivity::class.java))
+            finish()
         }
     }
 }

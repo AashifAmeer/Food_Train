@@ -15,7 +15,7 @@ class GlideLoader (val context :Context){
             Glide
                 .with(context)
                 .load(imageURI)
-                .centerCrop()
+                .fitCenter()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(imageView)
         }catch (e :IOException){
