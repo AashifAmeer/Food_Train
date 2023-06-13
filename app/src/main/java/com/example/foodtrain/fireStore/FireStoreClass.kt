@@ -14,6 +14,7 @@ import com.example.foodtrain.models.FoodType
 import com.example.foodtrain.models.User
 import com.example.foodtrain.userInterface.activities.*
 import com.example.foodtrain.userInterface.fragments.HomeFragment
+import com.example.foodtrain.userInterface.fragments.OrdersFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -312,5 +313,45 @@ class FireStoreClass {
     }
 
 
+    suspend fun loadOrderDetails() : ArrayList<AddToCart> {
+        val orderList = ArrayList<AddToCart>()
+
+        try {
+            val querySnapshot = foodTrainFireStore.collection(Constants.ADD_TO_CART).get().await()
+
+            for(document in querySnapshot) {
+                val orderDetails = document.toObject(AddToCart::class.java)
+                orderList.add(orderDetails)
+            }
+
+        }catch (e : Exception){
+
+        }
+
+        return orderList
+    }
+
+    fun updateOrderDetails(orderId : String,addToCart : HashMap<String,Any>){
+
+        foodTrainFireStore.collection(Constants.ADD_TO_CART)
+            .document(orderId)
+            .update(addToCart)
+            .addOnSuccessListener {
+
+                GlobalScope.launch(Dispatchers.Main){
+                    val orders = loadOrderDetails()
+                    OrdersFragment().getOrderUpdates(orders)
+                }
+
+            }
+            .addOnFailureListener {e->
+                Log.e(
+                    "Error",
+                    "Error occurred while updating the user details. ",
+                    e
+                )
+            }
+
+    }
 }
 

@@ -8,6 +8,6 @@ data class AddToCart (
     val food_id : String = "",
     val food_image : String = "",
     val food_name : String = "",
-    val food_quantity_order: Int = 1,
-    val food_total_price : Double = 0.0,
+    var food_quantity_order: Int = 1,
+    var food_total_price : Double = 0.0,
         )

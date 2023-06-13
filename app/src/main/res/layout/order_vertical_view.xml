@@ -25,6 +25,7 @@
             app:cardCornerRadius="35dp">
 
             <ImageView
+                android:id="@+id/food_order_image"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
@@ -43,12 +44,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/poppins_bold"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/red_dark"
                 android:textSize="20sp"
                 android:text="Water Melon" />
             <TextView
                 android:id="@+id/product_price"
+                android:fontFamily="@font/poppins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -67,6 +70,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:text="-"
+                    android:id="@+id/decrement_button"
                     android:backgroundTint="@color/black"
                     android:textSize="25sp"
                     android:layout_weight="1"
@@ -74,6 +78,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_weight="1"
+                    android:id="@+id/quantityChange"
                     android:text="1"
                     android:textAlignment="center"
                     android:textColor="@color/red_dark"
@@ -81,6 +86,7 @@
                     android:textStyle="bold"
                     android:layout_height="wrap_content"/>
                 <Button
+                    android:id="@+id/increment_button"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:text="+"
