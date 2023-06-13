@@ -12,7 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodtrain.GlideLoader
 import com.example.foodtrain.R
+import com.example.foodtrain.fireStore.FireStoreClass
+import com.example.foodtrain.models.AddToCart
 import com.example.foodtrain.models.FoodItem
+import com.google.type.DateTime
+import kotlinx.android.synthetic.main.home_vertical_food_item_type.view.*
+import java.util.*
 
 class HomeVerFoodListAdapter(
     val context : Context,private val foods : List<FoodItem>
@@ -28,6 +33,27 @@ class HomeVerFoodListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val food = foods[position]
         holder.bind(food)
+
+        holder.itemView.addToCartImage.setOnClickListener {
+            val orderId = generateNewID()
+            val foodId = food.food_id
+            val foodName = food.food_name
+            val quantity = 1
+            val totalPrice = food.food_price
+            val foodImage = food.food_image
+
+            val addToCart = AddToCart(
+                orderId,
+                "",
+                foodId,
+                foodImage,
+                foodName,
+                quantity,
+                totalPrice,
+            )
+
+            FireStoreClass().addToCartOrdersToFireStore(context,addToCart)
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,5 +71,8 @@ class HomeVerFoodListAdapter(
     }
     override fun getItemCount(): Int {
         return foods.size
+    }
+    private fun generateNewID() : String{
+        return UUID.randomUUID().toString()
     }
 }

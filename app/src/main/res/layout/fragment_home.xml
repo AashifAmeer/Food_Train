@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/chili_g72b6294f4_1280"
+                    android:src="@drawable/burger_g4704af498_1280"
                     />
             </androidx.cardview.widget.CardView>
             <TextView

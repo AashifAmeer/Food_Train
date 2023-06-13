@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
 import com.example.foodtrain.Constants
+import com.example.foodtrain.models.AddToCart
 import com.example.foodtrain.models.FoodItem
 import com.example.foodtrain.models.FoodType
 import com.example.foodtrain.models.User
@@ -282,7 +284,32 @@ class FireStoreClass {
         return foodTypeNames
     }
 
+    // add to cart order to firebase
 
+    fun addToCartOrdersToFireStore( context: Context, addToCart : AddToCart){
+
+        addToCart.user_id = getCurrentUserId()
+
+        foodTrainFireStore.collection(Constants.ADD_TO_CART)
+            .document(addToCart.order_id)
+            .set(addToCart,SetOptions.merge())
+            .addOnCompleteListener {
+
+                GlobalScope.launch(Dispatchers.Main){
+
+                }
+                BottomNavBarActivity().addFoodItemToCartSuccess(addToCart.food_name,context)
+                //activity.addFoodItemToCartSuccess()
+
+            }
+            .addOnFailureListener { e->
+                Log.e(
+                    "Error",
+                    "Error while adding the food to cart",
+                    e
+                )
+            }
+    }
 
 
 }

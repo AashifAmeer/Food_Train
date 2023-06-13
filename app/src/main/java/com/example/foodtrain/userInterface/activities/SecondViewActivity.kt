@@ -15,8 +15,8 @@ class SecondViewActivity : AppCompatActivity() {
         val signUpLink = findViewById<Button>(R.id.SingUpLink)
 
         loginLink.setOnClickListener {
-            //startActivity(Intent(this@SecondViewActivity, LoginActivity::class.java))
-            startActivity(Intent(this@SecondViewActivity, BottomNavBarActivity::class.java))
+            startActivity(Intent(this@SecondViewActivity, LoginActivity::class.java))
+            //startActivity(Intent(this@SecondViewActivity, BottomNavBarActivity::class.java))
             finish()
         }
         signUpLink.setOnClickListener {

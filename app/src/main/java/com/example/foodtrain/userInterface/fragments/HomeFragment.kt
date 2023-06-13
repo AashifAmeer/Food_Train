@@ -1,9 +1,11 @@
 package com.example.foodtrain.userInterface.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,7 @@ import com.example.foodtrain.databinding.FragmentHomeBinding
 import com.example.foodtrain.fireStore.FireStoreClass
 import com.example.foodtrain.models.FoodItem
 import com.example.foodtrain.models.FoodType
+import com.example.foodtrain.userInterface.activities.BottomNavBarActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -116,6 +119,8 @@ class HomeFragment : Fragment() {
         productList.clear()
         productList.addAll(foodType)
     }
+
+
 
     // Without database
 

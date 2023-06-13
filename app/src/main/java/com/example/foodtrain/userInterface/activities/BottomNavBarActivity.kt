@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.widget.Toolbar
@@ -41,17 +42,6 @@ class BottomNavBarActivity : BaseActivity() {
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME,"A").toString()
 
         welcomeText.text = "Hello, $username"
-
-        //---------------------------------------------------
-//        var userDetails = User()
-//        var heading : String = "EDIT PRO"
-//        if(intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
-//            // Getting extra user details from parcelableExtra.
-//            userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
-//        }
-//        if(intent.hasExtra("profileHeading")){
-//            heading = intent.getStringExtra("profileHeading")!!
-//        }
 
         sideNavigationBar()
         getUserDetails()
@@ -114,16 +104,19 @@ class BottomNavBarActivity : BaseActivity() {
         val mobile = findViewById<TextView>(R.id.userMobile)
         val gender = findViewById<TextView>(R.id.userGender)
 
-//        if(user != null){
-//            uname.text = "${user.fname} ${user.lname}"
-//            email.text = "Email   : ${user.email}"
-//            mobile.text = "Mobile : ${user.mobile}"
-//            gender.text = "Gender : ${user.gender.toUpperCase()}"
-//        }
+        if(user != null){
+            uname.text = "${user.fname} ${user.lname}"
+            email.text = "Email   : ${user.email}"
+            mobile.text = "Mobile : ${user.mobile}"
+            gender.text = "Gender : ${user.gender.toUpperCase()}"
+        }
     }
     override fun onResume() {
         super.onResume()
         val navigationView = findViewById<NavigationView>(R.id.sideNavigationView)
         navigationView.setCheckedItem(0) // Use 0 as the argument to clear the checked state
+    }
+    fun addFoodItemToCartSuccess(foodName : String,context: Context){
+        Toast.makeText(context,"$foodName is added to cart successfully !",Toast.LENGTH_LONG).show()
     }
 }
