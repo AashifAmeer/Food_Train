@@ -46,13 +46,16 @@ class HomeHorAdapter(
 
             textView.text = foodType.foodTypeName
 
-            val backgroundColor = if (adapterPosition == selectedPosition) {
-                ContextCompat.getColor(context,R.color.yellow)
-            } else {
-                ContextCompat.getColor(context, R.color.red)
-            }
 
-            horCardView.setCardBackgroundColor(backgroundColor)
+            if (adapterPosition == selectedPosition) {
+                val backgroundColor = ContextCompat.getColor(context,R.color.yellow)
+                horCardView.setCardBackgroundColor(backgroundColor)
+                onFoodTypeSelected(foodType)
+            } else {
+                val backgroundColor = ContextCompat.getColor(context, R.color.red)
+                horCardView.setCardBackgroundColor(backgroundColor)
+
+            }
 
             //image.setImageResource(foodType.foodTypeImage)
             //Glide.with(itemView).load(foodType.foodTypeImage).into(image)
@@ -71,6 +74,7 @@ class HomeHorAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val product = productList[position]
         holder.bind(product)
+        //onFoodTypeSelected(product)
     }
     override fun getItemCount(): Int {
         return productList.size

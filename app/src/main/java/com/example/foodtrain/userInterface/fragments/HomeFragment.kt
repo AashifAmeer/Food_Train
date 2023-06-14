@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
         //addSampleProducts()
     }
     private fun showTypeOfFood(foods: List<FoodItem>) {
-         val foodAdapter = HomeVerFoodListAdapter(requireContext(),foods)
+        val foodAdapter = HomeVerFoodListAdapter(requireContext(),foods)
         recyclerViewVer.adapter = foodAdapter
     }
 //
