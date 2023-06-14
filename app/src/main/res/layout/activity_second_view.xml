@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="25dp"
-    android:background="@drawable/registration_page"
+    android:background="@drawable/forgot_password"
     android:layout_height="match_parent"
     tools:context=".userInterface.activities.SecondViewActivity">
 
@@ -12,16 +12,16 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_extrabold"
         android:text="Sri Lanka's #1 food delivery app"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="#02061E"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/linear1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/linear1"
-        />
+        app:layout_constraintVertical_bias="0.696" />
 
     <LinearLayout
         android:id="@+id/linear1"

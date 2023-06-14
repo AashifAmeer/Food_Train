@@ -8,7 +8,7 @@
     android:layout_gravity="center"
 
     android:padding="27dp"
-    android:background="@drawable/login_page"
+    android:background="@drawable/new_login"
     >
 
 
@@ -67,7 +67,7 @@
         android:padding="15dp"
         android:text="L O G I N"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/textInputLayout2"

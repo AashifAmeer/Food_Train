@@ -24,10 +24,14 @@
 
     </group>
     <group android:checkableBehavior="single">
-        <item android:title="Communication">
+        <item android:title="Other">
             <menu>
                 <group>
-                    <item android:title="Share" android:icon="@drawable/ic_baseline_product_24"/>
+                    <item
+                        android:id="@+id/logout"
+                        android:title="Log Out"
+                        android:icon="@drawable/ic_baseline_logout_24"
+                        />
                 </group>
             </menu>
         </item>

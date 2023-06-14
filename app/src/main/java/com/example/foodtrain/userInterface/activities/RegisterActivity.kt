@@ -1,5 +1,6 @@
 package com.example.foodtrain.userInterface.activities
 
+import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.text.TextUtils
@@ -41,7 +42,8 @@ class RegisterActivity : BaseActivity() {
         }
 
         loginBtnClick.setOnClickListener {
-            onBackPressed()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 

@@ -5,7 +5,7 @@
     tools:context=".userInterface.fragments.HomeFragment"
     android:layout_height="match_parent"
     android:id="@+id/swipe_refresh_layout"
-    android:background="#F0F9FA"
+    android:background="#f0f8ff"
     android:layout_width="match_parent"
     >
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="25dp"
-                android:text="Let's Eat"
+                android:text="Categories"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_bold"
                 android:textSize="25sp"

@@ -35,6 +35,7 @@ class LoginActivity : BaseActivity() {
 
         registerBtnClick.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
     }
     private fun validateUserLogin(): Boolean {
